@@ -11,11 +11,11 @@
  *
  * @return int
  */
-int State::evaluate() {
+int State::evaluate(bool self) {
   // [TODO] design your own evaluation function
   Board cur = board;
-  const static int val[] = {0, 1, 5, 3, 3, 9, 1000000000};
-  int pt1 = 0, pt2 = 0;
+  const static int val[] = {0, 1, 5, 3, 3, 9, 10000};
+  int self_points = 0, oppn_points = 0;
   /*
   const static int wt1[6][5] = {
     {50, 10, 10, 10, 50},
@@ -35,10 +35,10 @@ int State::evaluate() {
   */
   for (int i = 0; i < BOARD_H; i++)
     for (int j = 0; j < BOARD_W; j++) {
-      pt1 += val[(int)cur.board[player][i][j]];
-      pt2 += val[(int)cur.board[player ^ 1][i][j]];
+      self_points += val[(int)cur.board[self][i][j]];
+      oppn_points += val[(int)cur.board[self ^ 1][i][j]];
     }
-  return pt1 - pt2;
+  return self_points - oppn_points;
 }
 
 
