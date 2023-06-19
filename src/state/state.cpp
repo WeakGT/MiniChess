@@ -13,9 +13,10 @@
  */
 int State::evaluate() {
   // [TODO] design your own evaluation function
-  Borad cur = board;
-  const static int val[] = {0, 1, 5, 3, 3, 9, 200};
+  Board cur = board;
+  const static int val[] = {0, 1, 5, 3, 3, 9, 1000000000};
   int pt1 = 0, pt2 = 0;
+  /*
   const static int wt1[6][5] = {
     {50, 10, 10, 10, 50},
     {10, 5, 5, 5, 10},
@@ -31,10 +32,11 @@ int State::evaluate() {
     {10, 5, 5, 5, 10},
     {50, 10, 10, 10, 50}
   };
+  */
   for (int i = 0; i < BOARD_H; i++)
     for (int j = 0; j < BOARD_W; j++) {
-      pt1 += val[cur.board[player][i][j]] + wt1[i][j];
-      pt2 += val[cur.board[player ^ 1][i][j]] + wt2[i][j];
+      pt1 += val[(int)cur.board[player][i][j]];
+      pt2 += val[(int)cur.board[player ^ 1][i][j]];
     }
   return pt1 - pt2;
 }
