@@ -9,5 +9,5 @@
 class Alphabeta {
 public:
   static Move get_move(State *state, int depth);
-  static int alphabeta(State* node, int depth, int alpha, int beta, bool self);
+  static double alphabeta(State* node, int depth, double alpha, double beta, bool self);
 };
